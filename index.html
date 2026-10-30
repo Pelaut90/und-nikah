@@ -1,0 +1,1375 @@
+<!DOCTYPE html>
+<html lang="id" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ARJ Wedding Canvas - Digital Wedding Invitation Studio</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Great+Vibes&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        burgundy: {
+                            900: '#1a0307',
+                            800: '#2e060d',
+                            700: '#4d0c17',
+                            600: '#6d1222',
+                        },
+                        emeraldCustom: {
+                            900: '#021e17',
+                            800: '#053126',
+                            700: '#0c4a3b',
+                            600: '#10634f',
+                        },
+                        sapphire: {
+                            900: '#040d1a',
+                            800: '#0a1a33',
+                            700: '#11294d',
+                        },
+                        gold: {
+                            light: '#fbf0b9',
+                            DEFAULT: '#d4af37',
+                            dark: '#aa820a',
+                            rose: '#e6ca65',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                        cinzel: ['Cinzel', 'serif'],
+                        serif: ['Cormorant Garamond', 'serif'],
+                        script: ['Great Vibes', 'cursive'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0f172a;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #334155;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #d4af37;
+        }
+
+        /* Glassmorphism Panel */
+        .glass-panel {
+            background: rgba(15, 23, 42, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(212, 175, 55, 0.25);
+        }
+
+        .gold-gradient-text {
+            background: linear-gradient(135deg, #fff2a3 0%, #d4af37 50%, #aa820a 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Interactive Device Framing */
+        .phone-frame {
+            width: 375px;
+            height: 700px;
+            border-radius: 40px;
+            box-shadow: 0 0 0 10px #1e293b, 0 20px 50px rgba(0,0,0,0.8);
+            position: relative;
+            overflow: hidden;
+            border: 4px solid #334155;
+        }
+
+        .tablet-frame {
+            width: 600px;
+            height: 700px;
+            border-radius: 28px;
+            box-shadow: 0 0 0 10px #1e293b, 0 20px 50px rgba(0,0,0,0.8);
+            position: relative;
+            overflow: hidden;
+            border: 4px solid #334155;
+        }
+
+        .desktop-frame {
+            width: 100%;
+            height: 700px;
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            border: 2px solid #334155;
+            overflow: hidden;
+        }
+
+        /* Dynamic Themes */
+        .theme-burgundy {
+            background: radial-gradient(circle at center, #4d0c17 0%, #1a0307 90%);
+            color: #fbf0b9;
+        }
+        .theme-burgundy .card-box {
+            background: rgba(46, 6, 13, 0.85);
+            border: 1px solid rgba(212, 175, 55, 0.4);
+        }
+
+        .theme-emerald {
+            background: radial-gradient(circle at center, #0c4a3b 0%, #021e17 90%);
+            color: #e2f7f1;
+        }
+        .theme-emerald .card-box {
+            background: rgba(5, 49, 38, 0.85);
+            border: 1px solid rgba(16, 185, 129, 0.4);
+        }
+
+        .theme-sapphire {
+            background: radial-gradient(circle at center, #11294d 0%, #040d1a 90%);
+            color: #e0f2fe;
+        }
+        .theme-sapphire .card-box {
+            background: rgba(10, 26, 51, 0.85);
+            border: 1px solid rgba(56, 189, 248, 0.4);
+        }
+
+        .theme-pearl {
+            background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+            color: #0f172a;
+        }
+        .theme-pearl .card-box {
+            background: #ffffff;
+            border: 1px solid #cbd5e1;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+        }
+
+        /* Gold Foil Button Style */
+        .btn-gold {
+            background: linear-gradient(135deg, #d4af37 0%, #aa820a 100%);
+            color: #1a0307;
+            font-weight: 700;
+            transition: all 0.3s ease;
+        }
+        .btn-gold:hover {
+            box-shadow: 0 4px 20px rgba(212, 175, 55, 0.5);
+            transform: translateY(-1px);
+        }
+    </style>
+</head>
+<body class="bg-slate-950 text-slate-100 font-sans min-h-screen flex flex-col antialiased">
+
+    <!-- GLOBAL HEADER NAVIGATION & ROLE SWITCHER -->
+    <header class="sticky top-0 z-50 bg-slate-900/90 backdrop-blur-md border-b border-slate-800 px-4 lg:px-8 py-3">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-3">
+            
+            <!-- Studio Brand Logo -->
+            <div class="flex items-center space-x-3 cursor-pointer" onclick="switchMainMode('client')">
+                <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-burgundy-700 via-gold to-yellow-200 flex items-center justify-center shadow-lg shadow-gold/20">
+                    <i class="fa-solid fa-ring text-slate-950 text-xl"></i>
+                </div>
+                <div>
+                    <h1 class="font-cinzel text-lg font-bold tracking-wider gold-gradient-text leading-tight">ARJ</h1>
+                    <p class="text-[10px] text-slate-400 tracking-widest uppercase font-semibold">Wedding Canvas Studio</p>
+                </div>
+            </div>
+
+            <!-- Role Selector Tabs -->
+            <div class="bg-slate-950 p-1 rounded-full border border-slate-800 flex items-center space-x-1 shadow-inner">
+                <button id="btnModeClient" onclick="switchMainMode('client')" class="px-5 py-2 rounded-full text-xs font-semibold transition-all flex items-center space-x-2 bg-gradient-to-r from-gold to-gold-dark text-slate-950 shadow-md">
+                    <i class="fa-solid fa-wand-magic-sparkles"></i>
+                    <span>Portal Klien</span>
+                </button>
+                <button id="btnModeAdmin" onclick="switchMainMode('admin')" class="px-5 py-2 rounded-full text-xs font-semibold transition-all flex items-center space-x-2 text-slate-400 hover:text-white">
+                    <i class="fa-solid fa-user-shield"></i>
+                    <span>Panel Admin Studio</span>
+                </button>
+            </div>
+
+            <!-- System Status -->
+            <div class="hidden lg:flex items-center space-x-3 text-xs">
+                <span class="inline-flex items-center px-2.5 py-1 rounded-full text-[10px] font-medium bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
+                    <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 mr-1.5 animate-pulse"></span> Mode Aktif
+                </span>
+            </div>
+        </div>
+    </header>
+
+    <!-- MAIN APP WRAPPER CONTAINER -->
+    <main class="flex-1 max-w-7xl w-full mx-auto p-4 md:p-6 lg:p-8">
+
+        <!-- ========================================================================= -->
+        <!-- MODE 1: CLIENT PORTAL (THEME SELECTION, WIZARD FORM & LIVE PREVIEW)        -->
+        <!-- ========================================================================= -->
+        <section id="clientModeSection" class="block">
+            <div class="grid lg:grid-cols-12 gap-8">
+                
+                <!-- LEFT COLUMN: WIZARD FORM & THEME SELECTOR (7 Cols) -->
+                <div class="lg:col-span-7 space-y-6">
+                    
+                    <!-- Wizard Steps Bar -->
+                    <div class="glass-panel p-4 rounded-2xl flex items-center justify-between text-xs">
+                        <button onclick="setClientStep(1)" id="stepBtn1" class="flex-1 py-2.5 rounded-xl text-center font-bold transition-all bg-gold text-slate-950 shadow">
+                            1. Pilih Tema Mewah
+                        </button>
+                        <div class="w-6 h-0.5 bg-slate-800 mx-2"></div>
+                        <button onclick="setClientStep(2)" id="stepBtn2" class="flex-1 py-2.5 rounded-xl text-center font-bold transition-all text-slate-400 hover:text-white">
+                            2. Isi Data Lengkap
+                        </button>
+                    </div>
+
+                    <!-- STEP 1: THEME CATALOG PANEL -->
+                    <div id="stepPanel1" class="glass-panel p-6 rounded-2xl space-y-5">
+                        <div>
+                            <h2 class="font-cinzel text-xl text-gold font-bold flex items-center gap-2">
+                                <i class="fa-solid fa-palette text-amber-400"></i> Katalog Tema Undangan Mewah
+                            </h2>
+                            <p class="text-xs text-slate-400 mt-1">Pilih desain tema eksklusif yang sesuai dengan tema hari bahagia Anda.</p>
+                        </div>
+
+                        <div class="grid sm:grid-cols-2 gap-4" id="themeCatalogGrid">
+                            <!-- Theme Cards injected by JS -->
+                        </div>
+
+                        <div class="pt-4 flex justify-end">
+                            <button onclick="setClientStep(2)" class="btn-gold px-6 py-2.5 rounded-xl text-xs uppercase tracking-wider flex items-center gap-2">
+                                <span>Lanjut Isi Data</span>
+                                <i class="fa-solid fa-arrow-right"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- STEP 2: FORM INPUT DATA PANEL -->
+                    <div id="stepPanel2" class="glass-panel p-6 rounded-2xl space-y-6 hidden">
+                        <div class="flex justify-between items-center border-b border-slate-800 pb-4">
+                            <div>
+                                <h2 class="font-cinzel text-xl text-gold font-bold flex items-center gap-2">
+                                    <i class="fa-solid fa-pen-to-square text-amber-400"></i> Formulir Undangan Pernikahan
+                                </h2>
+                                <p class="text-xs text-slate-400 mt-1">Data yang diisi akan langsung ter-render pada Live Preview di samping.</p>
+                            </div>
+                            <span class="text-xs text-emerald-400 bg-emerald-900/30 border border-emerald-500/30 px-3 py-1 rounded-full">
+                                <i class="fa-solid fa-rotate text-[10px] animate-spin mr-1"></i> Sync Aktif
+                            </span>
+                        </div>
+
+                        <form id="clientForm" onsubmit="saveClientInvitation(event)" class="space-y-6">
+                            
+                            <!-- SECTION 1: DATA PASANGAN MEMPELAI -->
+                            <div class="bg-slate-900/60 p-4 rounded-xl border border-slate-800 space-y-4">
+                                <h3 class="text-xs font-cinzel font-bold text-amber-300 uppercase tracking-wider flex items-center gap-2">
+                                    <i class="fa-solid fa-heart text-rose-500"></i> Data Pasangan Mempelai
+                                </h3>
+
+                                <!-- Mempelai Pria -->
+                                <div class="grid sm:grid-cols-2 gap-3 pt-1">
+                                    <div>
+                                        <label class="block text-[11px] text-slate-300 mb-1">Nama Panggilan Pria *</label>
+                                        <input type="text" id="inputGroomNick" oninput="updateLivePreview()" required value="Alinur" class="w-full bg-slate-950 border border-slate-800 rounded-lg px-3 py-2 text-xs focus:border-gold focus:outline-none">
+                                    </div>
+                                    <div>
+                                        <label class="block text-[11px] text-slate-300 mb-1">Nama Lengkap Pria & Gelar *</label>
+                                        <input type="text" id="inputGroomFull" oninput="updateLivePreview()" required value="Alinur Pradana, S.T." class="w-full bg-slate-950 border border-slate-800 rounded-lg px-3 py-2 text-xs focus:border-gold focus:outline-none">
+                                    </div>
+                                    <div>
+                                        <label class="block text-[11px] text-slate-300 mb-1">Nama Ayah Pria *</label>
+                                        <input type="text" id="inputGroomFather" oninput="updateLivePreview()" required value="Bpk. Hj. Rahmat Wijaya" class="w-full bg-slate-950 border border-slate-800 rounded-lg px-3 py-2 text-xs focus:border-gold focus:outline-none">
+                                    </div>
+                                    <div>
+                                        <label class="block text-[11px] text-slate-300 mb-1">Nama Ibu Pria *</label>
+                                        <input type="text" id="inputGroomMother" oninput="updateLivePreview()" required value="Ibu Hj. Siti Nurhaliza" class="w-full bg-slate-950 border border-slate-800 rounded-lg px-3 py-2 text-xs focus:border-gold focus:outline-none">
+                                    </div>
+                                </div>
+
+                                <div class="w-full h-px bg-slate-800 my-2"></div>
+
+                                <!-- Mempelai Wanita -->
+                                <div class="grid sm:grid-cols-2 gap-3">
+                                    <div>
+                                        <label class="block text-[11px] text-slate-300 mb-1">Nama Panggilan Wanita *</label>
+                                        <input type="text" id="inputBrideNick" oninput="updateLivePreview()" required value="Clara" class="w-full bg-slate-950 border border-slate-800 rounded-lg px-3 py-2 text-xs focus:border-gold focus:outline-none">
+                                    </div>
+                                    <div>
+                                        <label class="block text-[11px] text-slate-300 mb-1">Nama Lengkap Wanita & Gelar *</label>
+                                        <input type="text" id="inputBrideFull" oninput="updateLivePreview()" required value="Clara Anggraini, M.B.A." class="w-full bg-slate-950 border border-slate-800 rounded-lg px-3 py-2 text-xs focus:border-gold focus:outline-none">
+                                    </div>
+                                    <div>
+                                        <label class="block text-[11px] text-slate-300 mb-1">Nama Ayah Wanita *</label>
+                                        <input type="text" id="inputBrideFather" oninput="updateLivePreview()" required value="Bpk. Dr. Bambang Sudiro" class="w-full bg-slate-950 border border-slate-800 rounded-lg px-3 py-2 text-xs focus:border-gold focus:outline-none">
+                                    </div>
+                                    <div>
+                                        <label class="block text-[11px] text-slate-300 mb-1">Nama Ibu Wanita *</label>
+                                        <input type="text" id="inputBrideMother" oninput="updateLivePreview()" required value="Ibu Hj. Endang Rahayu" class="w-full bg-slate-950 border border-slate-800 rounded-lg px-3 py-2 text-xs focus:border-gold focus:outline-none">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- SECTION 2: WAKTU & LOKASI -->
+                            <div class="bg-slate-900/60 p-4 rounded-xl border border-slate-800 space-y-4">
+                                <h3 class="text-xs font-cinzel font-bold text-amber-300 uppercase tracking-wider flex items-center gap-2">
+                                    <i class="fa-solid fa-calendar-check text-emerald-400"></i> Detail Acara & Lokasi
+                                </h3>
+
+                                <div class="grid sm:grid-cols-3 gap-3">
+                                    <div>
+                                        <label class="block text-[11px] text-slate-300 mb-1">Tanggal Pernikahan *</label>
+                                        <input type="date" id="inputEventDate" onchange="updateLivePreview()" required value="2026-12-12" class="w-full bg-slate-950 border border-slate-800 rounded-lg px-3 py-2 text-xs text-slate-100 focus:border-gold focus:outline-none">
+                                    </div>
+                                    <div>
+                                        <label class="block text-[11px] text-slate-300 mb-1">Waktu Akad *</label>
+                                        <input type="text" id="inputAkadTime" oninput="updateLivePreview()" required value="08:00 - 10:00 WIB" class="w-full bg-slate-950 border border-slate-800 rounded-lg px-3 py-2 text-xs focus:border-gold focus:outline-none">
+                                    </div>
+                                    <div>
+                                        <label class="block text-[11px] text-slate-300 mb-1">Waktu Resepsi *</label>
+                                        <input type="text" id="inputReceptionTime" oninput="updateLivePreview()" required value="11:00 - 14:00 WIB" class="w-full bg-slate-950 border border-slate-800 rounded-lg px-3 py-2 text-xs focus:border-gold focus:outline-none">
+                                    </div>
+                                </div>
+
+                                <div class="grid sm:grid-cols-2 gap-3">
+                                    <div>
+                                        <label class="block text-[11px] text-slate-300 mb-1">Nama Tempat / Gedung *</label>
+                                        <input type="text" id="inputVenueName" oninput="updateLivePreview()" required value="Grand Ballroom Ritz-Carlton Jakarta" class="w-full bg-slate-950 border border-slate-800 rounded-lg px-3 py-2 text-xs focus:border-gold focus:outline-none">
+                                    </div>
+                                    <div>
+                                        <label class="block text-[11px] text-slate-300 mb-1">Link Google Maps (URL)</label>
+                                        <input type="url" id="inputMapUrl" oninput="updateLivePreview()" value="https://maps.google.com" class="w-full bg-slate-950 border border-slate-800 rounded-lg px-3 py-2 text-xs focus:border-gold focus:outline-none">
+                                    </div>
+                                    <div class="sm:col-span-2">
+                                        <label class="block text-[11px] text-slate-300 mb-1">Alamat Lengkap Gedung *</label>
+                                        <textarea id="inputVenueAddress" oninput="updateLivePreview()" required rows="2" class="w-full bg-slate-950 border border-slate-800 rounded-lg px-3 py-2 text-xs focus:border-gold focus:outline-none">Jl. DR. Ide Anak Agung Gde Agung No.1, Mega Kuningan, Jakarta Selatan</textarea>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- SECTION 3: REKENING HADIAH DIGITAL -->
+                            <div class="bg-slate-900/60 p-4 rounded-xl border border-slate-800 space-y-4">
+                                <div class="flex justify-between items-center">
+                                    <h3 class="text-xs font-cinzel font-bold text-amber-300 uppercase tracking-wider flex items-center gap-2">
+                                        <i class="fa-solid fa-gift text-purple-400"></i> Rekening Amplop / Hadiah Digital
+                                    </h3>
+                                    <button type="button" onclick="addBankInputRow()" class="text-[11px] text-gold hover:underline flex items-center gap-1">
+                                        <i class="fa-solid fa-plus-circle"></i> Tambah Rekening
+                                    </button>
+                                </div>
+
+                                <div id="bankAccountsContainer" class="space-y-3">
+                                    <!-- Bank Row 1 -->
+                                    <div class="bank-row grid grid-cols-12 gap-2 bg-slate-950 p-2.5 rounded-lg border border-slate-800 items-center">
+                                        <input type="text" placeholder="Nama Bank" value="BANK BCA" class="bank-name col-span-3 bg-slate-900 border border-slate-800 rounded px-2 py-1.5 text-xs focus:border-gold focus:outline-none" oninput="updateLivePreview()">
+                                        <input type="text" placeholder="No Rekening" value="8820192833" class="bank-acc col-span-4 bg-slate-900 border border-slate-800 rounded px-2 py-1.5 text-xs font-mono focus:border-gold focus:outline-none" oninput="updateLivePreview()">
+                                        <input type="text" placeholder="Atas Nama" value="Alinur Pradana" class="bank-holder col-span-4 bg-slate-900 border border-slate-800 rounded px-2 py-1.5 text-xs focus:border-gold focus:outline-none" oninput="updateLivePreview()">
+                                        <button type="button" onclick="this.parentElement.remove(); updateLivePreview();" class="col-span-1 text-rose-400 hover:text-rose-300 text-center text-xs"><i class="fa-solid fa-trash-can"></i></button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- SECTION 4: GALERI FOTO -->
+                            <div class="bg-slate-900/60 p-4 rounded-xl border border-slate-800 space-y-4">
+                                <h3 class="text-xs font-cinzel font-bold text-amber-300 uppercase tracking-wider flex items-center gap-2">
+                                    <i class="fa-solid fa-images text-cyan-400"></i> Foto Sampul & Galeri
+                                </h3>
+
+                                <div class="grid sm:grid-cols-2 gap-3">
+                                    <div>
+                                        <label class="block text-[11px] text-slate-300 mb-1">URL Foto Sampul Utama</label>
+                                        <input type="url" id="inputCoverPhoto" oninput="updateLivePreview()" value="https://images.unsplash.com/photo-1583939003579-730e3918a45a?auto=format&fit=crop&w=600&q=80" class="w-full bg-slate-950 border border-slate-800 rounded-lg px-3 py-2 text-xs focus:border-gold focus:outline-none">
+                                    </div>
+                                    <div>
+                                        <label class="block text-[11px] text-slate-300 mb-1">URL Foto Prewedding #1</label>
+                                        <input type="url" id="inputGalleryPhoto1" oninput="updateLivePreview()" value="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=600&q=80" class="w-full bg-slate-950 border border-slate-800 rounded-lg px-3 py-2 text-xs focus:border-gold focus:outline-none">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Form Buttons -->
+                            <div class="pt-2 flex flex-wrap gap-3 items-center justify-between">
+                                <button type="button" onclick="setClientStep(1)" class="px-4 py-2.5 rounded-xl border border-slate-700 text-slate-300 hover:bg-slate-800 text-xs font-semibold">
+                                    <i class="fa-solid fa-arrow-left mr-1"></i> Kembali Pilih Tema
+                                </button>
+                                
+                                <button type="submit" class="btn-gold px-8 py-3 rounded-xl text-xs uppercase tracking-wider flex items-center gap-2 shadow-lg shadow-gold/20">
+                                    <i class="fa-solid fa-paper-plane"></i>
+                                    <span>Simpan & Publikasikan Undangan</span>
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+
+                </div>
+
+                <!-- RIGHT COLUMN: REAL-TIME PREVIEW CANVAS (5 Cols) -->
+                <div class="lg:col-span-5 relative">
+                    <div class="sticky top-24 glass-panel p-4 md:p-6 rounded-2xl space-y-4 flex flex-col items-center">
+                        
+                        <div class="w-full flex items-center justify-between border-b border-slate-800 pb-3">
+                            <div class="flex items-center space-x-2">
+                                <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-ping"></span>
+                                <h3 class="font-cinzel text-xs font-bold text-gold uppercase tracking-wider">Live Preview Real-time</h3>
+                            </div>
+                            <span id="previewThemeBadge" class="text-[10px] bg-burgundy-900 border border-gold/40 text-gold px-2.5 py-0.5 rounded-full font-serif">
+                                Theme: Royal Burgundy
+                            </span>
+                        </div>
+
+                        <!-- Phone Frame Canvas -->
+                        <div class="phone-frame w-full max-w-[340px] h-[600px] bg-slate-950 flex flex-col relative my-2 overflow-hidden" id="livePreviewContainer">
+                            <div id="previewCanvas" class="w-full h-full overflow-y-auto p-4 space-y-6 theme-burgundy">
+                                <!-- Dynamic Rendered Content -->
+                            </div>
+                        </div>
+
+                        <p class="text-[10px] text-slate-400 italic text-center">
+                            *Tampilan pada preview ini menyesuaikan dengan hasil akhir pada layar smartphone tamu undangan.
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ========================================================================= -->
+        <!-- MODE 2: ADMIN DASHBOARD, MANUAL THEME ADDER & WATERMARK PREVIEW MANAGER   -->
+        <!-- ========================================================================= -->
+        <section id="adminModeSection" class="hidden space-y-8">
+            
+            <!-- Admin Top Stats -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                <div class="glass-panel p-4 rounded-2xl flex items-center space-x-4 border-l-4 border-gold">
+                    <div class="w-12 h-12 rounded-xl bg-gold/10 text-gold flex items-center justify-center text-xl">
+                        <i class="fa-solid fa-users"></i>
+                    </div>
+                    <div>
+                        <p class="text-[11px] text-slate-400 font-medium">Total Undangan Klien</p>
+                        <p class="text-2xl font-bold font-cinzel text-white" id="statTotalClients">3</p>
+                    </div>
+                </div>
+
+                <div class="glass-panel p-4 rounded-2xl flex items-center space-x-4 border-l-4 border-emerald-500">
+                    <div class="w-12 h-12 rounded-xl bg-emerald-500/10 text-emerald-400 flex items-center justify-center text-xl">
+                        <i class="fa-solid fa-circle-check"></i>
+                    </div>
+                    <div>
+                        <p class="text-[11px] text-slate-400 font-medium">Lunas / Aktif</p>
+                        <p class="text-2xl font-bold font-cinzel text-emerald-400" id="statPaidClients">2</p>
+                    </div>
+                </div>
+
+                <div class="glass-panel p-4 rounded-2xl flex items-center space-x-4 border-l-4 border-amber-500">
+                    <div class="w-12 h-12 rounded-xl bg-amber-500/10 text-amber-400 flex items-center justify-center text-xl">
+                        <i class="fa-solid fa-clock-rotate-left"></i>
+                    </div>
+                    <div>
+                        <p class="text-[11px] text-slate-400 font-medium">Pending / Draft</p>
+                        <p class="text-2xl font-bold font-cinzel text-amber-400" id="statPendingClients">1</p>
+                    </div>
+                </div>
+
+                <div class="glass-panel p-4 rounded-2xl flex items-center space-x-4 border-l-4 border-purple-500">
+                    <div class="w-12 h-12 rounded-xl bg-purple-500/10 text-purple-400 flex items-center justify-center text-xl">
+                        <i class="fa-solid fa-cubes"></i>
+                    </div>
+                    <div>
+                        <p class="text-[11px] text-slate-400 font-medium">Katalog Tema Aktif</p>
+                        <p class="text-2xl font-bold font-cinzel text-purple-300" id="statTotalThemes">4 Tema</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Admin Sub Tabs Switcher -->
+            <div class="border-b border-slate-800 flex space-x-6 text-sm font-bold">
+                <button onclick="switchAdminTab('clients')" id="tabAdminClients" class="pb-3 border-b-2 border-gold text-gold flex items-center gap-2">
+                    <i class="fa-solid fa-address-book"></i> Manajemen Klien
+                </button>
+                <button onclick="switchAdminTab('preview')" id="tabAdminPreview" class="pb-3 border-b-2 border-transparent text-slate-400 hover:text-white flex items-center gap-2">
+                    <i class="fa-solid fa-display"></i> Mode Live Preview & Quick Editor Admin
+                </button>
+                <button onclick="switchAdminTab('themes')" id="tabAdminThemes" class="pb-3 border-b-2 border-transparent text-slate-400 hover:text-white flex items-center gap-2">
+                    <i class="fa-solid fa-swatchbook"></i> Kelola & Tambah Tema Manual
+                </button>
+            </div>
+
+            <!-- TAB 1: CLIENT MANAGEMENT TABLE -->
+            <div id="adminTabContentClients" class="glass-panel rounded-2xl p-6 space-y-4">
+                <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+                    <div>
+                        <h3 class="font-cinzel text-lg text-gold font-bold">Daftar Undangan Klien</h3>
+                        <p class="text-xs text-slate-400">Kelola status pembayaran, tema pilihan, dan link unik milik klien.</p>
+                    </div>
+                    
+                    <button onclick="switchMainMode('client')" class="btn-gold px-4 py-2 rounded-xl text-xs font-semibold flex items-center gap-2">
+                        <i class="fa-solid fa-plus"></i> Buat Undangan Klien
+                    </button>
+                </div>
+
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left text-xs border-collapse">
+                        <thead>
+                            <tr class="border-b border-slate-800 text-slate-400 uppercase tracking-wider font-cinzel">
+                                <th class="py-3 px-4">Klien / Pasangan</th>
+                                <th class="py-3 px-4">Pilihan Tema</th>
+                                <th class="py-3 px-4">Tanggal Acara</th>
+                                <th class="py-3 px-4">Status</th>
+                                <th class="py-3 px-4 text-center">Aksi Admin</th>
+                            </tr>
+                        </thead>
+                        <tbody id="adminClientTableBody" class="divide-y divide-slate-800/60">
+                            <!-- Populated via JS -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- TAB 2: EXCLUSIVE ADMIN LIVE PREVIEW MANAGER WITH DEVICE FRAMES & QUICK EDITOR -->
+            <div id="adminTabContentPreview" class="space-y-6 hidden">
+                
+                <!-- Admin Preview Top Bar Tools -->
+                <div class="glass-panel p-4 rounded-2xl flex flex-wrap items-center justify-between gap-4">
+                    <!-- Client Selector -->
+                    <div class="flex items-center space-x-3">
+                        <label class="text-xs font-cinzel text-gold font-bold">Pilih Klien:</label>
+                        <select id="adminClientSelect" onchange="loadAdminClientPreview(this.value)" class="bg-slate-900 border border-slate-700 text-xs text-white rounded-lg px-3 py-2 focus:border-gold focus:outline-none">
+                            <!-- Dynamic -->
+                        </select>
+                    </div>
+
+                    <!-- Device Frame View Controls -->
+                    <div class="bg-slate-950 p-1 rounded-xl border border-slate-800 flex items-center space-x-1">
+                        <button onclick="setAdminDeviceFrame('mobile')" id="btnFrameMobile" class="px-3 py-1.5 rounded-lg text-xs font-semibold bg-gold text-slate-950 shadow">
+                            <i class="fa-solid fa-mobile-screen mr-1"></i> Mobile
+                        </button>
+                        <button onclick="setAdminDeviceFrame('tablet')" id="btnFrameTablet" class="px-3 py-1.5 rounded-lg text-xs font-semibold text-slate-400 hover:text-white">
+                            <i class="fa-solid fa-tablet-screen-button mr-1"></i> Tablet
+                        </button>
+                        <button onclick="setAdminDeviceFrame('desktop')" id="btnFrameDesktop" class="px-3 py-1.5 rounded-lg text-xs font-semibold text-slate-400 hover:text-white">
+                            <i class="fa-solid fa-desktop mr-1"></i> Desktop
+                        </button>
+                    </div>
+
+                    <!-- Watermark Status Toggle -->
+                    <div class="flex items-center space-x-2">
+                        <label class="text-xs text-slate-300">Watermark Draft:</label>
+                        <input type="checkbox" id="adminWatermarkToggle" onchange="toggleAdminWatermark()" checked class="w-4 h-4 accent-gold cursor-pointer">
+                    </div>
+                </div>
+
+                <div class="grid lg:grid-cols-12 gap-8 items-start">
+                    
+                    <!-- ADMIN LIVE PREVIEW FRAME DISPLAY (7 Cols) -->
+                    <div class="lg:col-span-7 flex flex-col items-center justify-center min-h-[680px] bg-slate-950/60 rounded-2xl border border-slate-800 p-6 relative overflow-hidden">
+                        
+                        <!-- ADMIN WATERMARK BANNER -->
+                        <div id="adminWatermarkBanner" class="absolute top-4 z-30 bg-rose-600/90 text-white font-cinzel text-xs font-bold px-6 py-1.5 rounded-full shadow-lg border border-rose-300 tracking-widest uppercase animate-pulse">
+                            ⚠️ DRAFT PREVIEW ADMIN - WATERMARK UNPAID
+                        </div>
+
+                        <!-- Dynamic Frame Canvas wrapper -->
+                        <div id="adminFrameWrapper" class="phone-frame transition-all duration-300 my-auto">
+                            <div id="adminCanvasContent" class="w-full h-full overflow-y-auto p-4 space-y-6 theme-burgundy">
+                                <!-- Rendered Client Data -->
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!-- SIDE QUICK EDITOR PANEL (5 Cols) -->
+                    <div class="lg:col-span-5 glass-panel p-6 rounded-2xl space-y-4">
+                        <div class="border-b border-slate-800 pb-3 flex justify-between items-center">
+                            <h3 class="font-cinzel text-sm text-gold font-bold flex items-center gap-2">
+                                <i class="fa-solid fa-bolt text-amber-400"></i> Quick Editor Admin
+                            </h3>
+                            <span class="text-[10px] text-slate-400">Sync Instan</span>
+                        </div>
+
+                        <form id="adminQuickEditForm" oninput="saveAdminQuickEdit()" class="space-y-4 text-xs">
+                            <div>
+                                <label class="block text-slate-300 mb-1">Status Pembayaran Klien</label>
+                                <select id="qePaymentStatus" class="w-full bg-slate-900 border border-slate-700 rounded-lg p-2 text-white focus:border-gold">
+                                    <option value="Lunas">Lunas (Aktif)</option>
+                                    <option value="Pending">Pending (Draft / Watermark)</option>
+                                </select>
+                            </div>
+
+                            <div>
+                                <label class="block text-slate-300 mb-1">Ubah Pilihan Tema</label>
+                                <select id="qeThemeSelect" class="w-full bg-slate-900 border border-slate-700 rounded-lg p-2 text-white focus:border-gold">
+                                    <!-- Dynamic -->
+                                </select>
+                            </div>
+
+                            <div class="grid grid-cols-2 gap-2">
+                                <div>
+                                    <label class="block text-slate-300 mb-1">Nama Pria</label>
+                                    <input type="text" id="qeGroomNick" class="w-full bg-slate-900 border border-slate-700 rounded-lg p-2 text-white focus:border-gold">
+                                </div>
+                                <div>
+                                    <label class="block text-slate-300 mb-1">Nama Wanita</label>
+                                    <input type="text" id="qeBrideNick" class="w-full bg-slate-900 border border-slate-700 rounded-lg p-2 text-white focus:border-gold">
+                                </div>
+                            </div>
+
+                            <div>
+                                <label class="block text-slate-300 mb-1">Tanggal Acara</label>
+                                <input type="date" id="qeEventDate" class="w-full bg-slate-900 border border-slate-700 rounded-lg p-2 text-white focus:border-gold">
+                            </div>
+
+                            <div>
+                                <label class="block text-slate-300 mb-1">Nama Gedung / Tempat</label>
+                                <input type="text" id="qeVenueName" class="w-full bg-slate-900 border border-slate-700 rounded-lg p-2 text-white focus:border-gold">
+                            </div>
+
+                            <p class="text-[10px] text-slate-400 italic">
+                                *Setiap perubahan pada panel ini langsung tersimpan dan merender perubahan pada preview admin.
+                            </p>
+                        </form>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- TAB 3: THEME CATALOG MANAGER & MANUAL THEME ADDER -->
+            <div id="adminTabContentThemes" class="space-y-6 hidden">
+                <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 glass-panel p-6 rounded-2xl">
+                    <div>
+                        <h3 class="font-cinzel text-lg text-gold font-bold">Kelola & Tambah Tema Manual</h3>
+                        <p class="text-xs text-slate-400">Atur kustomisasi skema warna, font, dan harga tema untuk katalog klien.</p>
+                    </div>
+
+                    <button onclick="toggleManualThemeForm()" class="btn-gold px-4 py-2 rounded-xl text-xs font-semibold flex items-center gap-2">
+                        <i class="fa-solid fa-plus"></i> Form Tambah Tema Manual
+                    </button>
+                </div>
+
+                <!-- MANUAL THEME BUILDER FORM -->
+                <div id="manualThemeFormCard" class="glass-panel p-6 rounded-2xl space-y-4 border-2 border-gold/40 hidden">
+                    <h4 class="font-cinzel text-sm text-gold font-bold flex items-center gap-2">
+                        <i class="fa-solid fa-wand-magic-sparkles"></i> Form Pembuatan Tema Manual oleh Admin
+                    </h4>
+
+                    <form onsubmit="handleCreateManualTheme(event)" class="space-y-4 text-xs">
+                        <div class="grid md:grid-cols-3 gap-3">
+                            <div>
+                                <label class="block text-slate-300 mb-1">Nama Tema *</label>
+                                <input type="text" id="addThemeName" required placeholder="Misal: Tuscan Gold Elegance" class="w-full bg-slate-950 border border-slate-800 rounded-lg p-2 focus:border-gold focus:outline-none">
+                            </div>
+                            <div>
+                                <label class="block text-slate-300 mb-1">Kategori / Badge</label>
+                                <input type="text" id="addThemeBadge" defaultValue="Custom Admin" class="w-full bg-slate-950 border border-slate-800 rounded-lg p-2 focus:border-gold focus:outline-none">
+                            </div>
+                            <div>
+                                <label class="block text-slate-300 mb-1">Harga Sewa Tema *</label>
+                                <input type="text" id="addThemePrice" required defaultValue="Rp 250.000" class="w-full bg-slate-950 border border-slate-800 rounded-lg p-2 focus:border-gold focus:outline-none">
+                            </div>
+                        </div>
+
+                        <div>
+                            <label class="block text-slate-300 mb-1">Deskripsi Tema</label>
+                            <input type="text" id="addThemeDesc" required placeholder="Deskripsi estetika singkat..." class="w-full bg-slate-950 border border-slate-800 rounded-lg p-2 focus:border-gold focus:outline-none">
+                        </div>
+
+                        <div class="grid grid-cols-2 md:grid-cols-3 gap-3 bg-slate-950 p-3 rounded-xl border border-slate-800">
+                            <div>
+                                <label class="block text-[10px] text-slate-400 mb-1">Warna Background</label>
+                                <input type="color" id="addThemeBgColor" defaultValue="#1a0307" class="w-full h-8 bg-transparent cursor-pointer">
+                            </div>
+                            <div>
+                                <label class="block text-[10px] text-slate-400 mb-1">Warna Kartu / Card</label>
+                                <input type="color" id="addThemeCardBg" defaultValue="#2e060d" class="w-full h-8 bg-transparent cursor-pointer">
+                            </div>
+                            <div>
+                                <label class="block text-[10px] text-slate-400 mb-1">Warna Aksen / Highlight</label>
+                                <input type="color" id="addThemePrimaryColor" defaultValue="#d4af37" class="w-full h-8 bg-transparent cursor-pointer">
+                            </div>
+                        </div>
+
+                        <div class="flex justify-end space-x-2 pt-2">
+                            <button type="button" onclick="toggleManualThemeForm()" class="px-4 py-2 rounded-xl border border-slate-700 text-xs">Batal</button>
+                            <button type="submit" class="btn-gold px-6 py-2 rounded-xl text-xs font-bold">Simpan Tema Ke Katalog</button>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- Theme Grid -->
+                <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-4" id="adminThemesGrid">
+                    <!-- Themes controls cards -->
+                </div>
+            </div>
+
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="border-t border-slate-800 bg-slate-950 py-6 text-center text-xs text-slate-500">
+        <p class="font-cinzel text-gold font-semibold">WIMATA Wedding Canvas Studio &copy; 2026</p>
+        <p class="mt-1">Solusi Platform Undangan Digital Mewah & Terpercaya.</p>
+    </footer>
+
+    <!-- TOAST NOTIFICATION SYSTEM -->
+    <div id="appToast" class="fixed bottom-6 right-6 z-50 transform translate-y-20 opacity-0 transition-all duration-300 bg-slate-900 border border-gold text-gold px-5 py-3 rounded-xl shadow-2xl flex items-center space-x-3 text-xs">
+        <i class="fa-solid fa-circle-check text-lg"></i>
+        <span id="appToastMsg">Pesan Notifikasi</span>
+    </div>
+
+    <!-- SHARE LINK MODAL -->
+    <div id="shareModal" class="fixed inset-0 z-50 hidden bg-slate-950/80 backdrop-blur-sm flex items-center justify-center p-4">
+        <div class="glass-panel max-w-md w-full p-6 rounded-2xl space-y-4 relative border-2 border-gold">
+            <button onclick="closeShareModal()" class="absolute top-4 right-4 text-slate-400 hover:text-white">
+                <i class="fa-solid fa-xmark text-lg"></i>
+            </button>
+
+            <div class="text-center space-y-2">
+                <div class="w-12 h-12 rounded-full bg-gold/10 text-gold flex items-center justify-center mx-auto text-xl">
+                    <i class="fa-solid fa-link"></i>
+                </div>
+                <h3 class="font-cinzel text-lg font-bold text-gold">Undangan Berhasil Dipublikasikan!</h3>
+                <p class="text-xs text-slate-300">Berikut adalah link unik undangan pernikahan digital milik Anda:</p>
+            </div>
+
+            <div class="bg-slate-950 p-3 rounded-xl border border-slate-800 flex items-center justify-between gap-2">
+                <input type="text" id="shareUrlInput" readonly class="bg-transparent text-xs text-emerald-400 font-mono w-full focus:outline-none">
+                <button onclick="copyShareUrl()" class="btn-gold text-[11px] px-3 py-1.5 rounded-lg whitespace-nowrap">
+                    <i class="fa-regular fa-copy mr-1"></i> Salin Link
+                </button>
+            </div>
+
+            <p class="text-[10px] text-slate-400 text-center">
+                *Link ini siap disebarkan ke daftar tamu keluarga & kerabat melalui WhatsApp / Sosial Media.
+            </p>
+        </div>
+    </div>
+
+    <!-- APPLICATION LOGIC JS ENGINE -->
+    <script>
+        // Data Stores
+        let themesCatalog = [
+            {
+                id: 'royal-burgundy',
+                name: 'Royal Velvet Burgundy',
+                description: 'Kemewahan beludru merah anggur klasik dengan sentuhan ukiran emas barok.',
+                price: 'Rp 250.000',
+                active: true,
+                badge: 'Populer',
+                bgClass: 'theme-burgundy',
+                primaryColor: '#d4af37'
+            },
+            {
+                id: 'emerald-glamour',
+                name: 'Emerald Chandelier Glamour',
+                description: 'Kemewahan hijau zamrud dipadukan dengan pola Art Deco berkilau.',
+                price: 'Rp 275.000',
+                active: true,
+                badge: 'Mewah',
+                bgClass: 'theme-emerald',
+                primaryColor: '#10b981'
+            },
+            {
+                id: 'sapphire-gold',
+                name: 'Midnight Sapphire & Gold',
+                description: 'Keindahan langit malam safir pekat berhias konstelasi bintang emas.',
+                price: 'Rp 250.000',
+                active: true,
+                badge: 'Favorit',
+                bgClass: 'theme-sapphire',
+                primaryColor: '#38bdf8'
+            },
+            {
+                id: 'haute-pearl',
+                name: 'Minimalist Haute Pearl',
+                description: 'Konsep bersih modern haute couture berlatar putih mutiara lembut.',
+                price: 'Rp 200.000',
+                active: true,
+                badge: 'Clean',
+                bgClass: 'theme-pearl',
+                primaryColor: '#0f172a'
+            }
+        ];
+
+        let clientsData = [
+            {
+                id: 'wimata-001',
+                groomNick: 'Alinur',
+                groomFull: 'Alinur Pradana, S.T.',
+                groomFather: 'Bpk. Hj. Rahmat Wijaya',
+                groomMother: 'Ibu Hj. Siti Nurhaliza',
+                brideNick: 'Clara',
+                brideFull: 'Clara Anggraini, M.B.A.',
+                brideFather: 'Bpk. Dr. Bambang Sudiro',
+                brideMother: 'Ibu Hj. Endang Rahayu',
+                eventDate: '2026-12-12',
+                akadTime: '08:00 - 10:00 WIB',
+                receptionTime: '11:00 - 14:00 WIB',
+                venueName: 'Grand Ballroom Ritz-Carlton Jakarta',
+                venueAddress: 'Jl. DR. Ide Anak Agung Gde Agung No.1, Mega Kuningan, Jakarta Selatan',
+                mapUrl: 'https://maps.google.com',
+                themeId: 'royal-burgundy',
+                paymentStatus: 'Lunas',
+                coverPhoto: 'https://images.unsplash.com/photo-1583939003579-730e3918a45a?auto=format&fit=crop&w=600&q=80',
+                galleryPhoto1: 'https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=600&q=80',
+                banks: [
+                    { name: 'BANK BCA', acc: '8820192833', holder: 'Alinur Pradana' },
+                    { name: 'BANK MANDIRI', acc: '137000987721', holder: 'Clara Anggraini' }
+                ]
+            },
+            {
+                id: 'wimata-002',
+                groomNick: 'Rian',
+                groomFull: 'Rian Hidayat, M.Kom.',
+                groomFather: 'Bpk. H. Sutrisno',
+                groomMother: 'Ibu Hj. Mariam',
+                brideNick: 'Siti',
+                brideFull: 'Siti Rahmawati, S.Ked.',
+                brideFather: 'Bpk. Prof. Iskandar',
+                brideMother: 'Ibu Hj. Aminah',
+                eventDate: '2027-01-20',
+                akadTime: '09:00 - 11:00 WIB',
+                receptionTime: '12:00 - 15:00 WIB',
+                venueName: 'Hotel Mulia Senayan Ballroom',
+                venueAddress: 'Jl. Asia Afrika No.6, Gelora, Jakarta Pusat',
+                mapUrl: 'https://maps.google.com',
+                themeId: 'emerald-glamour',
+                paymentStatus: 'Lunas',
+                coverPhoto: 'https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=600&q=80',
+                galleryPhoto1: 'https://images.unsplash.com/photo-1522673607200-164d1b6ce486?auto=format&fit=crop&w=600&q=80',
+                banks: [
+                    { name: 'BANK BNI', acc: '092182833', holder: 'Rian Hidayat' }
+                ]
+            },
+            {
+                id: 'wimata-003',
+                groomNick: 'Kevin',
+                groomFull: 'Kevin Sanjaya, B.A.',
+                groomFather: 'Bpk. Hendra Sanjaya',
+                groomMother: 'Ibu Natalia',
+                brideNick: 'Jessica',
+                brideFull: 'Jessica Wijaya, S.E.',
+                brideFather: 'Bpk. Herman Wijaya',
+                brideMother: 'Ibu Siska',
+                eventDate: '2027-02-14',
+                akadTime: '10:00 WIB',
+                receptionTime: '18:30 - 21:00 WIB',
+                venueName: 'Glass House Park Hyatt Jakarta',
+                venueAddress: 'Jl. Kebon Sirih No.17-19, Jakarta Pusat',
+                mapUrl: 'https://maps.google.com',
+                themeId: 'sapphire-gold',
+                paymentStatus: 'Pending',
+                coverPhoto: 'https://images.unsplash.com/photo-1519225421980-715cb0215aed?auto=format&fit=crop&w=600&q=80',
+                galleryPhoto1: 'https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?auto=format&fit=crop&w=600&q=80',
+                banks: [
+                    { name: 'BANK BCA', acc: '542198231', holder: 'Jessica Wijaya' }
+                ]
+            }
+        ];
+
+        let selectedThemeId = 'royal-burgundy';
+        let activeAdminClientId = 'wimata-001';
+
+        window.addEventListener('DOMContentLoaded', () => {
+            renderThemeCatalogGrid();
+            updateLivePreview();
+            renderAdminDashboard();
+        });
+
+        function switchMainMode(mode) {
+            const clientSec = document.getElementById('clientModeSection');
+            const adminSec = document.getElementById('adminModeSection');
+            const btnClient = document.getElementById('btnModeClient');
+            const btnAdmin = document.getElementById('btnModeAdmin');
+
+            if (mode === 'client') {
+                clientSec.classList.remove('hidden');
+                adminSec.classList.add('hidden');
+                btnClient.className = "px-5 py-2 rounded-full text-xs font-semibold transition-all flex items-center space-x-2 bg-gradient-to-r from-gold to-gold-dark text-slate-950 shadow-md";
+                btnAdmin.className = "px-5 py-2 rounded-full text-xs font-semibold transition-all text-slate-400 hover:text-white";
+            } else {
+                clientSec.classList.add('hidden');
+                adminSec.classList.remove('hidden');
+                btnAdmin.className = "px-5 py-2 rounded-full text-xs font-semibold transition-all flex items-center space-x-2 bg-gradient-to-r from-gold to-gold-dark text-slate-950 shadow-md";
+                btnClient.className = "px-5 py-2 rounded-full text-xs font-semibold transition-all text-slate-400 hover:text-white";
+                renderAdminDashboard();
+            }
+        }
+
+        function setClientStep(stepNum) {
+            const stepBtn1 = document.getElementById('stepBtn1');
+            const stepBtn2 = document.getElementById('stepBtn2');
+            const stepPanel1 = document.getElementById('stepPanel1');
+            const stepPanel2 = document.getElementById('stepPanel2');
+
+            if (stepNum === 1) {
+                stepBtn1.className = "flex-1 py-2.5 rounded-xl text-center font-bold transition-all bg-gold text-slate-950 shadow";
+                stepBtn2.className = "flex-1 py-2.5 rounded-xl text-center font-bold transition-all text-slate-400 hover:text-white";
+                stepPanel1.classList.remove('hidden');
+                stepPanel2.classList.add('hidden');
+            } else {
+                stepBtn2.className = "flex-1 py-2.5 rounded-xl text-center font-bold transition-all bg-gold text-slate-950 shadow";
+                stepBtn1.className = "flex-1 py-2.5 rounded-xl text-center font-bold transition-all text-slate-400 hover:text-white";
+                stepPanel2.classList.remove('hidden');
+                stepPanel1.classList.add('hidden');
+            }
+        }
+
+        function renderThemeCatalogGrid() {
+            const container = document.getElementById('themeCatalogGrid');
+            container.innerHTML = '';
+
+            themesCatalog.forEach(theme => {
+                const isSelected = theme.id === selectedThemeId;
+                const card = document.createElement('div');
+                card.className = `p-4 rounded-xl border cursor-pointer transition-all ${isSelected ? 'border-gold bg-gold/10 ring-2 ring-gold/40' : 'border-slate-800 bg-slate-900/60 hover:border-slate-700'}`;
+                card.onclick = () => selectTheme(theme.id);
+
+                card.innerHTML = `
+                    <div class="flex justify-between items-start mb-2">
+                        <span class="text-[10px] bg-slate-800 text-gold px-2 py-0.5 rounded font-mono">${theme.badge}</span>
+                        <span class="text-xs font-bold text-slate-200">${theme.price}</span>
+                    </div>
+                    <h4 class="font-cinzel text-sm font-bold text-white mb-1">${theme.name}</h4>
+                    <p class="text-[11px] text-slate-400 leading-relaxed">${theme.description}</p>
+                    <div class="mt-3 flex justify-between items-center text-[10px]">
+                        <span class="${isSelected ? 'text-gold font-bold' : 'text-slate-500'}">
+                            ${isSelected ? '✓ Terpilih' : 'Klik untuk Pilih'}
+                        </span>
+                        <div class="w-4 h-4 rounded-full" style="background-color: ${theme.primaryColor}"></div>
+                    </div>
+                `;
+                container.appendChild(card);
+            });
+        }
+
+        function selectTheme(themeId) {
+            selectedThemeId = themeId;
+            renderThemeCatalogGrid();
+            updateLivePreview();
+            
+            const themeObj = themesCatalog.find(t => t.id === themeId);
+            document.getElementById('previewThemeBadge').innerText = `Theme: ${themeObj.name}`;
+            showToast(`Tema diubah ke ${themeObj.name}`);
+        }
+
+        function getFormDataFromClientInputs() {
+            const bankRows = document.querySelectorAll('#bankAccountsContainer .bank-row');
+            const banks = [];
+            bankRows.forEach(row => {
+                const name = row.querySelector('.bank-name').value;
+                const acc = row.querySelector('.bank-acc').value;
+                const holder = row.querySelector('.bank-holder').value;
+                if (name && acc) {
+                    banks.push({ name, acc, holder });
+                }
+            });
+
+            return {
+                groomNick: document.getElementById('inputGroomNick').value || 'Pria',
+                groomFull: document.getElementById('inputGroomFull').value || 'Nama Lengkap Pria',
+                groomFather: document.getElementById('inputGroomFather').value || 'Bpk. Fulan',
+                groomMother: document.getElementById('inputGroomMother').value || 'Ibu Fulan',
+                brideNick: document.getElementById('inputBrideNick').value || 'Wanita',
+                brideFull: document.getElementById('inputBrideFull').value || 'Nama Lengkap Wanita',
+                brideFather: document.getElementById('inputBrideFather').value || 'Bpk. Fulan',
+                brideMother: document.getElementById('inputBrideMother').value || 'Ibu Fulan',
+                eventDate: document.getElementById('inputEventDate').value || '2026-12-12',
+                akadTime: document.getElementById('inputAkadTime').value || '08:00 WIB',
+                receptionTime: document.getElementById('inputReceptionTime').value || '11:00 WIB',
+                venueName: document.getElementById('inputVenueName').value || 'Gedung Pernikahan',
+                venueAddress: document.getElementById('inputVenueAddress').value || 'Alamat Lengkap Gedung',
+                mapUrl: document.getElementById('inputMapUrl').value || '#',
+                coverPhoto: document.getElementById('inputCoverPhoto').value || 'https://images.unsplash.com/photo-1583939003579-730e3918a45a?auto=format&fit=crop&w=600&q=80',
+                galleryPhoto1: document.getElementById('inputGalleryPhoto1').value || 'https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=600&q=80',
+                themeId: selectedThemeId,
+                banks: banks
+            };
+        }
+
+        function updateLivePreview() {
+            const data = getFormDataFromClientInputs();
+            const canvas = document.getElementById('previewCanvas');
+            renderInvitationMarkup(canvas, data);
+        }
+
+        function renderInvitationMarkup(targetElement, data) {
+            const themeObj = themesCatalog.find(t => t.id === data.themeId) || themesCatalog[0];
+            targetElement.className = `w-full h-full overflow-y-auto p-4 space-y-6 ${themeObj.bgClass}`;
+
+            const formattedDate = new Date(data.eventDate).toLocaleDateString('id-ID', {
+                weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'
+            });
+
+            targetElement.innerHTML = `
+                <!-- HERO -->
+                <div class="card-box rounded-2xl p-5 text-center relative overflow-hidden shadow-xl">
+                    <p class="font-cinzel text-[9px] tracking-widest uppercase opacity-80 mb-1">The Wedding Announcement</p>
+                    <div class="w-24 h-24 rounded-full overflow-hidden border-2 border-gold p-1 mx-auto my-3">
+                        <img src="${data.coverPhoto}" class="w-full h-full object-cover rounded-full">
+                    </div>
+                    <h2 class="font-script text-3xl py-1">${data.groomNick} & ${data.brideNick}</h2>
+                    <p class="font-serif italic text-xs mt-1">${formattedDate}</p>
+                </div>
+
+                <!-- PASANGAN -->
+                <div class="card-box rounded-2xl p-5 text-center space-y-4">
+                    <p class="font-cinzel text-[10px] tracking-wider text-gold font-bold">PASANGAN MEMPELAI</p>
+                    
+                    <div>
+                        <h3 class="font-script text-2xl text-gold">${data.groomFull}</h3>
+                        <p class="text-[10px] opacity-80 mt-1">Putra dari Pasangan:<br>${data.groomFather} & ${data.groomMother}</p>
+                    </div>
+
+                    <div class="font-script text-xl text-gold">&</div>
+
+                    <div>
+                        <h3 class="font-script text-2xl text-gold">${data.brideFull}</h3>
+                        <p class="text-[10px] opacity-80 mt-1">Putri dari Pasangan:<br>${data.brideFather} & ${data.brideMother}</p>
+                    </div>
+                </div>
+
+                <!-- RANGKAIAN ACARA -->
+                <div class="card-box rounded-2xl p-5 text-center space-y-3">
+                    <p class="font-cinzel text-[10px] tracking-wider text-gold font-bold">RANGKAIAN ACARA</p>
+                    <p class="text-xs font-bold">${formattedDate}</p>
+
+                    <div class="bg-black/20 p-2.5 rounded-lg text-xs space-y-1 border border-white/10">
+                        <p class="font-semibold text-gold">AKAD NIKAH</p>
+                        <p class="text-[10px]">${data.akadTime}</p>
+                    </div>
+
+                    <div class="bg-black/20 p-2.5 rounded-lg text-xs space-y-1 border border-white/10">
+                        <p class="font-semibold text-gold">RESEPSI PERNIKAHAN</p>
+                        <p class="text-[10px]">${data.receptionTime}</p>
+                    </div>
+
+                    <p class="text-xs font-semibold pt-1">${data.venueName}</p>
+                    <p class="text-[10px] opacity-80 leading-relaxed">${data.venueAddress}</p>
+                </div>
+
+                <!-- AMPLOP DIGITAL -->
+                <div class="card-box rounded-2xl p-5 text-center space-y-3">
+                    <p class="font-cinzel text-[10px] tracking-wider text-gold font-bold">AMPLOP DIGITAL</p>
+                    ${data.banks.map(b => `
+                        <div class="bg-black/30 p-2.5 rounded-lg border border-gold/30 text-xs">
+                            <p class="font-bold text-gold">${b.name}</p>
+                            <p class="font-mono my-0.5">${b.acc}</p>
+                            <p class="text-[10px] opacity-80">a.n ${b.holder}</p>
+                        </div>
+                    `).join('')}
+                </div>
+            `;
+        }
+
+        function addBankInputRow() {
+            const container = document.getElementById('bankAccountsContainer');
+            const div = document.createElement('div');
+            div.className = "bank-row grid grid-cols-12 gap-2 bg-slate-950 p-2.5 rounded-lg border border-slate-800 items-center";
+            div.innerHTML = `
+                <input type="text" placeholder="Nama Bank" class="bank-name col-span-3 bg-slate-900 border border-slate-800 rounded px-2 py-1.5 text-xs focus:border-gold focus:outline-none" oninput="updateLivePreview()">
+                <input type="text" placeholder="No Rekening" class="bank-acc col-span-4 bg-slate-900 border border-slate-800 rounded px-2 py-1.5 text-xs font-mono focus:border-gold focus:outline-none" oninput="updateLivePreview()">
+                <input type="text" placeholder="Atas Nama" class="bank-holder col-span-4 bg-slate-900 border border-slate-800 rounded px-2 py-1.5 text-xs focus:border-gold focus:outline-none" oninput="updateLivePreview()">
+                <button type="button" onclick="this.parentElement.remove(); updateLivePreview();" class="col-span-1 text-rose-400 hover:text-rose-300 text-center text-xs"><i class="fa-solid fa-trash-can"></i></button>
+            `;
+            container.appendChild(div);
+        }
+
+        function saveClientInvitation(e) {
+            e.preventDefault();
+            const data = getFormDataFromClientInputs();
+            const newId = 'wimata-' + String(clientsData.length + 1).padStart(3, '0');
+            
+            const newClient = {
+                id: newId,
+                ...data,
+                paymentStatus: 'Lunas'
+            };
+
+            clientsData.unshift(newClient);
+            renderAdminDashboard();
+
+            const generatedUrl = `${window.location.origin}${window.location.pathname}?invitation=${newId}`;
+            document.getElementById('shareUrlInput').value = generatedUrl;
+            document.getElementById('shareModal').classList.remove('hidden');
+        }
+
+        function closeShareModal() {
+            document.getElementById('shareModal').classList.add('hidden');
+        }
+
+        function copyShareUrl() {
+            const input = document.getElementById('shareUrlInput');
+            input.select();
+            document.execCommand('copy');
+            showToast('Link undangan berhasil disalin!');
+        }
+
+        function renderAdminDashboard() {
+            document.getElementById('statTotalClients').innerText = clientsData.length;
+            document.getElementById('statPaidClients').innerText = clientsData.filter(c => c.paymentStatus === 'Lunas').length;
+            document.getElementById('statPendingClients').innerText = clientsData.filter(c => c.paymentStatus === 'Pending').length;
+            document.getElementById('statTotalThemes').innerText = `${themesCatalog.length} Tema`;
+
+            const tbody = document.getElementById('adminClientTableBody');
+            tbody.innerHTML = '';
+
+            clientsData.forEach(c => {
+                const themeObj = themesCatalog.find(t => t.id === c.themeId) || themesCatalog[0];
+                const tr = document.createElement('tr');
+                tr.className = "hover:bg-slate-900/40 transition-colors";
+
+                tr.innerHTML = `
+                    <td class="py-3.5 px-4 font-semibold text-white">
+                        <div class="flex items-center space-x-2">
+                            <span class="w-2 h-2 rounded-full ${c.paymentStatus === 'Lunas' ? 'bg-emerald-400' : 'bg-amber-400'}"></span>
+                            <span>${c.groomNick} & ${c.brideNick}</span>
+                        </div>
+                        <span class="text-[10px] text-slate-500 font-mono">${c.id}</span>
+                    </td>
+                    <td class="py-3.5 px-4 text-slate-300">
+                        <span class="bg-slate-900 border border-slate-800 text-gold text-[10px] px-2.5 py-1 rounded-md font-serif">
+                            ${themeObj.name}
+                        </span>
+                    </td>
+                    <td class="py-3.5 px-4 text-slate-300">${c.eventDate}</td>
+                    <td class="py-3.5 px-4">
+                        <span class="text-[10px] px-2.5 py-1 rounded-full font-semibold ${c.paymentStatus === 'Lunas' ? 'bg-emerald-900/50 text-emerald-300 border border-emerald-500/30' : 'bg-amber-900/50 text-amber-300 border border-amber-500/30'}">
+                            ${c.paymentStatus}
+                        </span>
+                    </td>
+                    <td class="py-3.5 px-4 text-center">
+                        <div class="flex items-center justify-center space-x-2">
+                            <button onclick="previewAdminClient('${c.id}')" title="Preview Admin" class="p-1.5 rounded-lg bg-slate-900 text-gold hover:bg-gold hover:text-slate-950 transition-colors">
+                                <i class="fa-solid fa-eye"></i>
+                            </button>
+                            <button onclick="copyAdminClientLink('${c.id}')" title="Copy Link" class="p-1.5 rounded-lg bg-slate-900 text-emerald-400 hover:bg-emerald-500 hover:text-slate-950 transition-colors">
+                                <i class="fa-regular fa-copy"></i>
+                            </button>
+                            <button onclick="deleteAdminClient('${c.id}')" title="Hapus" class="p-1.5 rounded-lg bg-slate-900 text-rose-400 hover:bg-rose-600 hover:text-white transition-colors">
+                                <i class="fa-solid fa-trash-can"></i>
+                            </button>
+                        </div>
+                    </td>
+                `;
+                tbody.appendChild(tr);
+            });
+
+            const select = document.getElementById('adminClientSelect');
+            select.innerHTML = '';
+            clientsData.forEach(c => {
+                const opt = document.createElement('option');
+                opt.value = c.id;
+                opt.innerText = `${c.groomNick} & ${c.brideNick} (${c.id})`;
+                select.appendChild(opt);
+            });
+
+            const qeSelect = document.getElementById('qeThemeSelect');
+            qeSelect.innerHTML = '';
+            themesCatalog.forEach(t => {
+                const opt = document.createElement('option');
+                opt.value = t.id;
+                opt.innerText = t.name;
+                qeSelect.appendChild(opt);
+            });
+
+            renderAdminThemeControls();
+        }
+
+        function switchAdminTab(tabName) {
+            const btnClients = document.getElementById('tabAdminClients');
+            const btnPreview = document.getElementById('tabAdminPreview');
+            const btnThemes = document.getElementById('tabAdminThemes');
+
+            const contentClients = document.getElementById('adminTabContentClients');
+            const contentPreview = document.getElementById('adminTabContentPreview');
+            const contentThemes = document.getElementById('adminTabContentThemes');
+
+            btnClients.className = "pb-3 border-b-2 text-slate-400 hover:text-white flex items-center gap-2 border-transparent";
+            btnPreview.className = "pb-3 border-b-2 text-slate-400 hover:text-white flex items-center gap-2 border-transparent";
+            btnThemes.className = "pb-3 border-b-2 text-slate-400 hover:text-white flex items-center gap-2 border-transparent";
+
+            contentClients.classList.add('hidden');
+            contentPreview.classList.add('hidden');
+            contentThemes.classList.add('hidden');
+
+            if (tabName === 'clients') {
+                btnClients.className = "pb-3 border-b-2 border-gold text-gold flex items-center gap-2";
+                contentClients.classList.remove('hidden');
+            } else if (tabName === 'preview') {
+                btnPreview.className = "pb-3 border-b-2 border-gold text-gold flex items-center gap-2";
+                contentPreview.classList.remove('hidden');
+                loadAdminClientPreview(activeAdminClientId);
+            } else {
+                btnThemes.className = "pb-3 border-b-2 border-gold text-gold flex items-center gap-2";
+                contentThemes.classList.remove('hidden');
+            }
+        }
+
+        function previewAdminClient(clientId) {
+            activeAdminClientId = clientId;
+            switchAdminTab('preview');
+            document.getElementById('adminClientSelect').value = clientId;
+        }
+
+        function loadAdminClientPreview(clientId) {
+            activeAdminClientId = clientId;
+            const client = clientsData.find(c => c.id === clientId) || clientsData[0];
+            const canvas = document.getElementById('adminCanvasContent');
+
+            renderInvitationMarkup(canvas, client);
+
+            document.getElementById('qePaymentStatus').value = client.paymentStatus;
+            document.getElementById('qeThemeSelect').value = client.themeId;
+            document.getElementById('qeGroomNick').value = client.groomNick;
+            document.getElementById('qeBrideNick').value = client.brideNick;
+            document.getElementById('qeEventDate').value = client.eventDate;
+            document.getElementById('qeVenueName').value = client.venueName;
+
+            const wmBanner = document.getElementById('adminWatermarkBanner');
+            if (client.paymentStatus === 'Pending') {
+                wmBanner.classList.remove('hidden');
+                document.getElementById('adminWatermarkToggle').checked = true;
+            } else {
+                wmBanner.classList.add('hidden');
+                document.getElementById('adminWatermarkToggle').checked = false;
+            }
+        }
+
+        function saveAdminQuickEdit() {
+            const client = clientsData.find(c => c.id === activeAdminClientId);
+            if (!client) return;
+
+            client.paymentStatus = document.getElementById('qePaymentStatus').value;
+            client.themeId = document.getElementById('qeThemeSelect').value;
+            client.groomNick = document.getElementById('qeGroomNick').value;
+            client.brideNick = document.getElementById('qeBrideNick').value;
+            client.eventDate = document.getElementById('qeEventDate').value;
+            client.venueName = document.getElementById('qeVenueName').value;
+
+            loadAdminClientPreview(activeAdminClientId);
+            renderAdminDashboard();
+        }
+
+        function setAdminDeviceFrame(frameType) {
+            const wrapper = document.getElementById('adminFrameWrapper');
+            const btnM = document.getElementById('btnFrameMobile');
+            const btnT = document.getElementById('btnFrameTablet');
+            const btnD = document.getElementById('btnFrameDesktop');
+
+            btnM.className = "px-3 py-1.5 rounded-lg text-xs font-semibold text-slate-400 hover:text-white";
+            btnT.className = "px-3 py-1.5 rounded-lg text-xs font-semibold text-slate-400 hover:text-white";
+            btnD.className = "px-3 py-1.5 rounded-lg text-xs font-semibold text-slate-400 hover:text-white";
+
+            if (frameType === 'mobile') {
+                wrapper.className = "phone-frame transition-all duration-300 my-auto";
+                btnM.className = "px-3 py-1.5 rounded-lg text-xs font-semibold bg-gold text-slate-950 shadow";
+            } else if (frameType === 'tablet') {
+                wrapper.className = "tablet-frame transition-all duration-300 my-auto";
+                btnT.className = "px-3 py-1.5 rounded-lg text-xs font-semibold bg-gold text-slate-950 shadow";
+            } else {
+                wrapper.className = "desktop-frame transition-all duration-300 my-auto";
+                btnD.className = "px-3 py-1.5 rounded-lg text-xs font-semibold bg-gold text-slate-950 shadow";
+            }
+        }
+
+        function toggleAdminWatermark() {
+            const chk = document.getElementById('adminWatermarkToggle').checked;
+            const wmBanner = document.getElementById('adminWatermarkBanner');
+            if (chk) wmBanner.classList.remove('hidden');
+            else wmBanner.classList.add('hidden');
+        }
+
+        function toggleManualThemeForm() {
+            const card = document.getElementById('manualThemeFormCard');
+            card.classList.toggle('hidden');
+        }
+
+        function handleCreateManualTheme(e) {
+            e.preventDefault();
+            const name = document.getElementById('addThemeName').value;
+            const badge = document.getElementById('addThemeBadge').value;
+            const price = document.getElementById('addThemePrice').value;
+            const desc = document.getElementById('addThemeDesc').value;
+            const primaryColor = document.getElementById('addThemePrimaryColor').value;
+
+            const newTheme = {
+                id: 'custom-' + Date.now(),
+                name: name,
+                description: desc,
+                price: price,
+                active: true,
+                badge: badge || 'Custom',
+                bgClass: 'theme-burgundy',
+                primaryColor: primaryColor
+            };
+
+            themesCatalog.push(newTheme);
+            renderThemeCatalogGrid();
+            renderAdminDashboard();
+            toggleManualThemeForm();
+            showToast(`Tema manual "${name}" berhasil ditambahkan!`);
+        }
+
+        function renderAdminThemeControls() {
+            const container = document.getElementById('adminThemesGrid');
+            container.innerHTML = '';
+
+            themesCatalog.forEach(t => {
+                const card = document.createElement('div');
+                card.className = "glass-panel p-4 rounded-xl space-y-3";
+                card.innerHTML = `
+                    <div class="flex justify-between items-center">
+                        <h4 class="font-cinzel text-xs font-bold text-gold">${t.name}</h4>
+                        <span class="text-[10px] px-2 py-0.5 rounded ${t.active ? 'bg-emerald-900 text-emerald-300' : 'bg-slate-800 text-slate-400'}">
+                            ${t.active ? 'Aktif' : 'Non-aktif'}
+                        </span>
+                    </div>
+                    <div>
+                        <label class="block text-[10px] text-slate-400 mb-1">Harga Sewa Tema</label>
+                        <input type="text" value="${t.price}" onchange="t.price = this.value; showToast('Harga tema diperbarui');" class="bg-slate-900 border border-slate-700 text-xs text-white rounded px-2 py-1 w-full">
+                    </div>
+                    <div class="pt-1 flex items-center justify-between text-xs">
+                        <span class="text-[10px] text-slate-400">Status Katalog:</span>
+                        <button onclick="t.active = !t.active; renderAdminThemeControls(); renderThemeCatalogGrid();" class="text-[11px] underline text-amber-400">
+                            ${t.active ? 'Nonaktifkan' : 'Aktifkan'}
+                        </button>
+                    </div>
+                `;
+                container.appendChild(card);
+            });
+        }
+
+        function deleteAdminClient(id) {
+            if (confirm('Apakah Anda yakin ingin menghapus data undangan klien ini?')) {
+                clientsData = clientsData.filter(c => c.id !== id);
+                renderAdminDashboard();
+                showToast('Klien berhasil dihapus');
+            }
+        }
+
+        function copyAdminClientLink(id) {
+            const url = `${window.location.origin}${window.location.pathname}?invitation=${id}`;
+            const temp = document.createElement('input');
+            temp.value = url;
+            document.body.appendChild(temp);
+            temp.select();
+            document.execCommand('copy');
+            document.body.removeChild(temp);
+            showToast('Link undangan klien berhasil disalin!');
+        }
+
+        function showToast(msg) {
+            const toast = document.getElementById('appToast');
+            document.getElementById('appToastMsg').innerText = msg;
+            toast.classList.remove('translate-y-20', 'opacity-0');
+            setTimeout(() => {
+                toast.classList.add('translate-y-20', 'opacity-0');
+            }, 2500);
+        }
+    </script>
+</body>
+</html>
